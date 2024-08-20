@@ -1,0 +1,15 @@
+CREATE DATABASE node;
+CREATE TABLE users(
+    id SERIAL PRIMARY KEY,
+    login VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE tokens(
+    id INTEGER PRIMARY KEY NOT NULL,
+    uuid VARCHAR(255) NOT NULL UNIQUE,
+    CONSTRAINT fk_tokens
+      FOREIGN KEY(id) 
+        REFERENCES users(id)
+);
